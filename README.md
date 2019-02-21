@@ -1,4 +1,4 @@
-# Devexpress-Dashboard-Net-Core
+# Devexpress Dashboard with NetCore
 NetCore Devexpress Dashboard with authentication
 
 You can design nice dashboard screens and assign them to users.
