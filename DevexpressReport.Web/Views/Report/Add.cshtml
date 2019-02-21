@@ -1,0 +1,23 @@
+﻿@model ReportModel
+@{
+    Layout = "_LayoutManage";
+ }
+
+<div class="card mt-5">
+    <div class="card-body">
+        <h4 class="mt-5 mb-3">
+            Yeni Rapor
+        </h4>
+        <form asp-action="Add" class="forms-sample" method="post">
+            <div class="form-group">
+                <label for="exampleInputName1">Rapor Adı</label>
+                <input type="text" asp-for="@Model.Caption" class="form-control" placeholder="Rapor adı">
+            </div>
+            <div class="form-group">
+                <label for="exampleTextarea1">Rapor Xml'i</label>
+                <textarea name="dashboard" class="form-control" rows="15"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success mr-2">Kaydet</button>
+        </form>
+    </div>
+</div>

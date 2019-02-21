@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>DevexpressReport</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/jquery/dist/jquery.slim.js"></script>
+    @Html.DevExpress().StyleSheets()
+
+    <script type="text/javascript">
+        function onBeforeRender(dashboardControl) {
+            dashboardControl.registerExtension(new DevExpress.Dashboard.DashboardPanelExtension(dashboardControl, { dashboardThumbnail: "./DashboardThumbnail/{0}.png" }));
+        }
+    </script>
+</head>
+<body>
+    @RenderBody()
+
+
+    @Html.DevExpress().Scripts()
+</body>
+</html>

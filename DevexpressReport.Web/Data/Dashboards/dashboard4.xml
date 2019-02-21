@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="Aylık satış " />
+  <DataSources>
+    <SqlDataSource Name="_Vw_Dashboard_Aylik" ComponentName="DataSource1">
+      <Connection Name="MS SQL Connection" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="_Vw_Dashboard_Aylik">
+        <Tables>
+          <Table Name="_Vw_Dashboard_Aylik" />
+        </Tables>
+        <Columns>
+          <Column Table="_Vw_Dashboard_Aylik" Name="STOK_KODU" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="STOK_ADI" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="AYLIK SATIŞ MİKTARI" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="ORTALAMA FİYAT" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="GELİŞ FİYAT" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="GELİŞ TOPLAM" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="CIKIŞ FİYAT" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="CIKIS_TOPLAM" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="ÇIKIŞ MALİYET" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="KAR" />
+        </Columns>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Pie ComponentName="pieDashboardItem1" Name="Pies 1" DataSource="DataSource1" DataMember="_Vw_Dashboard_Aylik">
+      <DataItems>
+        <Measure DataMember="CIKIS_TOPLAM" DefaultId="DataItem0" />
+        <Measure DataMember="GELİŞ TOPLAM" DefaultId="DataItem1" />
+      </DataItems>
+      <Values>
+        <Value DefaultId="DataItem0" />
+        <Value DefaultId="DataItem1" />
+      </Values>
+    </Pie>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Weight="100">
+      <LayoutItem DashboardItem="pieDashboardItem1" Weight="100" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

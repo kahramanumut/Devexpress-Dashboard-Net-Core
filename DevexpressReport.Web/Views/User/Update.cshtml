@@ -1,0 +1,64 @@
+﻿@model ApplicationUser
+@{
+    Layout = "_LayoutManage";
+}
+
+<div class="card mt-5">
+    <div class="card-body">
+        <h4 class="mt-5 mb-3">
+            Kullanıcı Güncelle
+        </h4>
+        <form asp-action="Update" class="forms-sample" method="post">
+            <input type="text" hidden name="userId" value="@Model.Id" />
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" name="email" class="form-control" placeholder="Email" value="@Model.Email">
+            </div>
+            <div class="form-group">
+                <label>Adı</label>
+                <input type="text" name="name" class="form-control" placeholder="Adı" value="@Model.Name">
+            </div>
+            <div class="form-group">
+                <label>Soyadı</label>
+                <input type="text" name="surname" class="form-control" placeholder="Soyadı" value="@Model.Surname">
+            </div>
+            <div class="form-group">
+                <label>Parola</label>
+                <input type="password" name="password" class="form-control" placeholder="Parola">
+            </div>
+            <div class="form-group">
+                <label>Tekrar parola</label>
+                <input type="password" name="passwordAgain" class="form-control" placeholder="Tekrar parola">
+            </div>
+            <div class="form-group">
+                <label>Raporlar</label>
+                <select class="js-example-basic-multiple form-control" name="raporlar[]" multiple="multiple" asp-items="@ViewBag.Raporlar">
+
+                </select>
+            </div>
+            <div class="form-check form-check-flat">
+                <label class="form-check-label">
+                    <input type="checkbox" name="admin" class="form-check-input" @(ViewBag.Role == "Administrators" ? "checked" : "")> Yönetici
+                    <i class="input-helper"></i>
+                </label>
+            </div>
+            <button type="submit" class="btn btn-success mr-2">Kaydet</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.js-example-basic-multiple').select2();
+        var report = "@(String.IsNullOrEmpty(Model.Reports)?"":Model.Reports)";
+        if (report != "") {
+            var reportNonSplit = "@(String.IsNullOrEmpty(Model.Reports)?"":Model.Reports)";
+            var reportList = reportNonSplit.toString().split(';');
+
+            $('.js-example-basic-multiple').val(reportList);
+            $('.js-example-basic-multiple').trigger('change');
+        }
+
+
+});
+</script>

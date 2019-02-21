@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="tr-TR">
+  <Title Text="DashboardFromWinform" />
+  <DataSources>
+    <SqlDataSource Name="_Vw_Dashboard_Aylik" ComponentName="DataSource1">
+      <Connection Name="DashboardConnection" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="_Vw_Dashboard_Aylik">
+        <Tables>
+          <Table Name="_Vw_Dashboard_Aylik" X="30" Y="30" Width="125" Height="248" />
+        </Tables>
+        <Columns>
+          <Column Table="_Vw_Dashboard_Aylik" Name="STOK_KODU" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="STOK_ADI" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="AYLIK SATIŞ MİKTARI" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="ORTALAMA FİYAT" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="GELİŞ FİYAT" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="GELİŞ TOPLAM" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="CIKIŞ FİYAT" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="CIKIS_TOPLAM" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="ÇIKIŞ MALİYET" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="KAR" />
+        </Columns>
+      </Query>
+      <ResultSchema>
+        <DataSet Name="SQL Data Source 1">
+          <View Name="_Vw_Dashboard_Aylik">
+            <Field Name="STOK_KODU" Type="String" />
+            <Field Name="STOK_ADI" Type="String" />
+            <Field Name="AYLIK SATIŞ MİKTARI" Type="Decimal" />
+            <Field Name="ORTALAMA FİYAT" Type="Decimal" />
+            <Field Name="GELİŞ FİYAT" Type="Decimal" />
+            <Field Name="GELİŞ TOPLAM" Type="Decimal" />
+            <Field Name="CIKIŞ FİYAT" Type="Decimal" />
+            <Field Name="CIKIS_TOPLAM" Type="Decimal" />
+            <Field Name="ÇIKIŞ MALİYET" Type="Decimal" />
+            <Field Name="KAR" Type="Decimal" />
+          </View>
+        </DataSet>
+      </ResultSchema>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Pie ComponentName="pieDashboardItem1" Name="Pies 1" DataSource="DataSource1" DataMember="_Vw_Dashboard_Aylik">
+      <DataItems>
+        <Measure DataMember="ORTALAMA FİYAT" DefaultId="DataItem0" />
+        <Measure DataMember="AYLIK SATIŞ MİKTARI" DefaultId="DataItem1" />
+        <Measure DataMember="GELİŞ FİYAT" DefaultId="DataItem2" />
+      </DataItems>
+      <Values>
+        <Value DefaultId="DataItem0" />
+        <Value DefaultId="DataItem1" />
+        <Value DefaultId="DataItem2" />
+      </Values>
+    </Pie>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="pieDashboardItem1" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

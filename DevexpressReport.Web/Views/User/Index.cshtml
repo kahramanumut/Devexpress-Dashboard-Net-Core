@@ -1,0 +1,37 @@
+﻿@model List<ApplicationUser>
+@{
+    Layout = "_LayoutManage";
+}
+
+<div class="card-body mt-3">
+    @*<p class="card-description">
+            Add class
+            <code>.table-hover</code>
+        </p>*@
+    <div class="table-responsive">
+        <a asp-action="Add" asp-controller="User" class="btn btn-primary mb-3">Yeni kullanıcı ekle</a>
+        <table id="userTable" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Adı</th>
+                    <th>Soyadı</th>
+                    <th>Email</th>
+                    <th>Düzenle</th>
+                    <th>Sil</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Surname</td>
+                        <td>@item.Email</td>
+                        <td><a asp-action="Update" asp-controller="User" asp-route-userId="@item.Id" class="btn btn-primary">Düzenle</a></td>
+                        <td><a asp-action="Delete" asp-controller="User" asp-route-userId="@item.Id"  class="btn btn-danger">Sil</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

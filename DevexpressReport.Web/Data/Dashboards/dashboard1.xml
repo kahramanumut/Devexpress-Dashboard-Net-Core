@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="New Dashboard" />
+  <DataSources>
+    <SqlDataSource Name="SQL Data Source" ComponentName="sqlDataSource1" DataProcessingMode="Client">
+      <Connection Name="sqlConnection" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="Cari Hareket">
+        <Tables>
+          <Table Name="TBLCAHAR" />
+        </Tables>
+        <Columns>
+          <AllColumns />
+        </Columns>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+    <SqlDataSource Name="SQL Data Source 1" ComponentName="sqlDataSource2" DataProcessingMode="Client">
+      <Connection Name="sqlConnection" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="TBLSTHAR">
+        <Tables>
+          <Table Name="TBLSTHAR" />
+          <Table Name="TBLSTSABIT" />
+          <Relation Type="Inner" Parent="TBLSTHAR" Nested="TBLSTSABIT">
+            <KeyColumn Parent="STOK_KODU" Nested="STOK_KODU" />
+          </Relation>
+        </Tables>
+        <Columns>
+          <Column Table="TBLSTHAR" Name="STOK_KODU" />
+          <Column Table="TBLSTSABIT" Name="STOK_ADI" />
+          <Column Table="TBLSTHAR" Name="STHAR_GCMIK" />
+          <Column Table="TBLSTSABIT" Name="OLCU_BR1" />
+          <Column Table="TBLSTSABIT" Name="OLCU_BR2" />
+        </Columns>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Items>
+    <Pie ComponentName="pieDashboardItem1" Name="Pies 1" DataSource="sqlDataSource1" DataMember="Cari Hareket">
+      <DataItems>
+        <Measure DataMember="ALACAK" DefaultId="DataItem0" />
+        <Measure DataMember="BORC" DefaultId="DataItem1" />
+      </DataItems>
+      <Values>
+        <Value DefaultId="DataItem0" />
+        <Value DefaultId="DataItem1" />
+      </Values>
+    </Pie>
+    <Chart ComponentName="chartDashboardItem1" Name="Chart 1" DataSource="sqlDataSource1" DataMember="Cari Hareket">
+      <DataItems>
+        <Measure DataMember="ALACAK" DefaultId="DataItem0" />
+        <Measure DataMember="BORC" DefaultId="DataItem1" />
+      </DataItems>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple>
+              <Value DefaultId="DataItem0" />
+            </Simple>
+            <Simple>
+              <Value DefaultId="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Weight="100">
+      <LayoutItem DashboardItem="pieDashboardItem1" Weight="100" />
+      <LayoutItem DashboardItem="chartDashboardItem1" Weight="100" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

@@ -1,0 +1,37 @@
+﻿@model List<ReportModel>
+@{
+    Layout = "_LayoutManage";
+}
+
+
+<div class="card-body mt-3">
+    @*<p class="card-description">
+            Add class
+            <code>.table-hover</code>
+        </p>*@
+    <div class="table-responsive">
+        <a asp-action="Add" asp-controller="Report" class="btn btn-primary mb-3">Yeni rapor ekle</a>
+        <a asp-action="AddWithDesigner" asp-controller="Report" class="btn btn-primary mb-3">Designer ile rapor ekle</a>
+        <table id="reportTable" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Rapor Adı</th>
+                    <th>Düzenle</th>
+                    <th>Sil</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Caption</td>
+                            <td><a asp-action="Update" asp-controller="Report" asp-route-reportId="@item.Id" class="btn btn-primary">Düzenle</a></td>
+                            <td><a asp-action="Delete" asp-controller="Report" asp-route-reportId="@item.Id" id="@item.Id" class="btn btn-danger">Sil</a></td>
+                        </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+</div>

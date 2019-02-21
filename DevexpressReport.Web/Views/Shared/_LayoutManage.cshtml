@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>DevexpressReport</title>
+    <!-- plugins:css -->
+    <link href="~/lib/select2/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../vendors/iconfonts/puse-icons-feather/feather.css">
+    <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../vendors/css/vendor.bundle.addons.css">
+    <link href="~/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/css/style.css"/>
+
+    <script src="~/js/jquery-3.3.1.js"></script>
+
+    <script src="~/lib/select2/dist/js/select2.min.js"></script>
+    <script src="~/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/dataTables.bootstrap4.min.js"></script>
+
+    <link rel="shortcut icon" href="~/images/favicon.png" />
+</head>
+<body>
+    <div class="container-scroller">
+        <!--Partial-->
+        @await Html.PartialAsync("_navbarPartial.cshtml")
+        <!-- partial -->
+        <div class="container-fluid mt-5">
+
+            @RenderBody()
+
+            @await Html.PartialAsync("_footerPartial.cshtml")
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="~/vendors/js/vendor.bundle.base.js"></script>
+    <script src="~/vendors/js/vendor.bundle.addons.js"></script>
+
+
+
+    <script src="~/js/off-canvas.js"></script>
+    <script src="~/js/misc.js"></script>
+
+    <script src="~/js/dashboard.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

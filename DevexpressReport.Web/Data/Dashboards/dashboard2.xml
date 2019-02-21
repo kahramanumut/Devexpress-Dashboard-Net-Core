@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="Stok Dashboard" />
+  <DataSources>
+    <SqlDataSource Name="SQL Data Source" ComponentName="sqlDataSource1" DataProcessingMode="Client">
+      <Connection Name="sqlConnection" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="Cari Hareket">
+        <Tables>
+          <Table Name="TBLCAHAR" />
+        </Tables>
+        <Columns>
+          <AllColumns />
+        </Columns>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+</Dashboard>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="New Dashboard" />
+  <DataSources>
+    <SqlDataSource Name="_Vw_Dashboard_Aylik" ComponentName="DataSource1">
+      <Connection Name="MS SQL Connection" FromAppConfig="true" />
+      <Query Type="SelectQuery" Name="_Vw_Dashboard_Aylik">
+        <Tables>
+          <Table Name="_Vw_Dashboard_Aylik" />
+        </Tables>
+        <Columns>
+          <Column Table="_Vw_Dashboard_Aylik" Name="STOK_KODU" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="STOK_ADI" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="AYLIK SATIŞ MİKTARI" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="ORTALAMA FİYAT" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="GELİŞ FİYAT" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="GELİŞ TOPLAM" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="CIKIŞ FİYAT" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="CIKIS_TOPLAM" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="ÇIKIŞ MALİYET" />
+          <Column Table="_Vw_Dashboard_Aylik" Name="KAR" />
+        </Columns>
+      </Query>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+</Dashboard>

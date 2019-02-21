@@ -1,0 +1,65 @@
+@model List<ReportModel>
+@{
+    Layout = "_LayoutDevexpress";
+ }
+
+<div class="row">
+    <div class="btn-group-vertical" style="width:100%; max-width:300px;margin-left:5px">
+        <div id="closeMenu" class="btn btn-danger" style="max-width:30px; margin-left:270px"><</div>
+        <div id="customMenu" style="width:100%; max-width:300px;margin-left:5px">
+            @if (User.IsInRole(Constant.AdministratorsRole))
+            {
+                <a asp-action="Index" asp-controller="Report" class="btn btn-success btn-block mb-4">Admin paneli</a>
+            }
+            <div class="alert alert-info" style="width:100%; max-width:300px; margin-bottom:0">Raporlar</div>
+            @foreach (var item in Model)
+            {
+                <button id="@item.Id" type="button" class="btn btn-primary btn-block">@item.Caption</button>
+            }
+            </div>
+        </div>
+        <div id="divDashboard" style="position: absolute; left: 290px; top: 0; right: 0; bottom: 0;">
+            @(Html.DevExpress().Dashboard("dashboardControl1")
+
+                                                    .Width("100%")
+                                                    .Height("100%")
+                                                    .WorkingMode(WorkingMode.ViewerOnly)
+                                                    .OnBeforeRender("onBeforeRender")
+
+            )
+        </div>
+</div>
+<script>
+
+    function onBeforeRender(sender) {
+
+    }
+    $("button").click(function(){
+        changeDashboard($(this).attr('id'));
+    });
+
+    $("#closeMenu").click(function () {
+        $("#customMenu").toggle(function () {
+            var divDashcssLeft = $("#divDashboard").css("left");
+            var closeMenucss = $("#closeMenu").css("margin-left");
+            var closeMenuText = $("#closeMenu").text();
+            var closeMenuClass = $("#closeMenu").attr('class');
+            
+            $("#divDashboard").css("left", divDashcssLeft == "290px" ? "30px" : "290px");
+            $("#closeMenu").css("margin-left", closeMenucss == "270px" ? "10px": "270px");
+            $("#closeMenu").text(closeMenuText == "<" ? ">" : "<");
+            $("#closeMenu").removeAttr('class');
+            $("#closeMenu").attr('class', closeMenuClass == "btn btn-danger" ? "btn btn-success": "btn btn-danger");
+            
+        }
+        );
+    });
+
+    function changeDashboard(id)
+    {
+        dashboardControl1.loadDashboard(id)
+            .done(function () { console.log("Rapor baþarýyla yüklendi"); })
+            .fail(function () { console.log("Rapo yüklenemedi"); });
+    }
+
+</script>

@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <div class="navbar-menu-wrapper d-flex align-items-center" style="padding-left:15%">
+        <a class="navbar-brand brand-logo" asp-action="Index" asp-controller="Report">
+            <img src="~/images/logo.png" width="80" alt="logo" />
+        </a>
+        <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
+            <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString()=="Report" ? "active":"")">
+                <a asp-action="Index" asp-controller="Report" class="nav-link">
+                    <i class="mdi mdi-file-document"></i>Raporlar
+                </a>
+            </li>
+            <li class="nav-item  @(ViewContext.RouteData.Values["Controller"].ToString()=="User" ? "active":"")">
+                <a asp-action="Index" asp-controller="User" class="nav-link">
+                    <i class="mdi mdi-account"></i>Kullanıcılar
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+            <li class="float-right nav-item dropdown d-none d-xl-inline-block">
+                <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                    <span class="profile-text">Merhaba, @UserManager.GetUserName(User).Substring(0,@UserManager.GetUserName(User).IndexOf("@")) </span>
+                    <img class="img-xs rounded-circle" src="~/images/faces-clipart/pic-1.png" alt="Profile image">
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
+                        <button type="submit" class="dropdown-item">
+                            Çıkış
+                        </button>
+                    </form>
+                </div>
+            </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="icon-menu"></span>
+        </button>
+    </div>
+</nav>
