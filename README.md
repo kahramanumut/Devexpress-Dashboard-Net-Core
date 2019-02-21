@@ -16,7 +16,7 @@ You should edit appsetting.json, then run.
 ![alt text](https://github.com/kahramanumut/Devexpress-Dashboard-Net-Core/blob/master/Login.png)
 
 #Designer
-![alt text](https://github.com/kahramanumut/Devexpress-Dashboard-Net-Core/blob/master/Designer.png)
+![alt text](https://github.com/kahramanumut/Devexpress-Dashboard-Net-Core/blob/master/Designer.PNG)
 
 #Dashboard
 ![alt text](https://github.com/kahramanumut/Devexpress-Dashboard-Net-Core/blob/master/Dashboard.png)
